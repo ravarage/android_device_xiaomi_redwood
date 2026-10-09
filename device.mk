@@ -283,7 +283,9 @@ PRODUCT_COPY_FILES += \
 # Kernel
 PRODUCT_ENABLE_UFFD_GC := true
 PRODUCT_OTA_ENFORCE_VINTF_KERNEL_REQUIREMENTS := false
-LOCAL_KERNEL := device/xiaomi/redwood-kernel/Image
+# Use the locally built Vajra kernel when build_derp.sh has placed one in
+# vendor/lineage-priv/kernel, otherwise the prebuilt from redwood-kernel.
+LOCAL_KERNEL := $(firstword $(wildcard vendor/lineage-priv/kernel/Image) device/xiaomi/redwood-kernel/Image)
 PRODUCT_COPY_FILES += \
 	$(LOCAL_KERNEL):kernel
 
