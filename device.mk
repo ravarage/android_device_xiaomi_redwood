@@ -8,6 +8,10 @@
 TARGET_NFC_SUPPORTED_SKUS := redwood
 
 # Inherit from those products. Most specific first.
+# 64-bit only zygote: saves the RAM of a second, 32-bit zygote. 32-bit vendor
+# services (audio HAL, Codec2, CAS) are native and keep working; apps that
+# ship only 32-bit code will not launch. Fallback: revert this line's commit.
+ZYGOTE_FORCE_64 := true
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 TARGET_SUPPORTS_OMX_SERVICE := false
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
