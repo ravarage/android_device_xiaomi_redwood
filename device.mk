@@ -27,6 +27,9 @@ $(call inherit-product-if-exists, vendor/bcr/bcr.mk)
 # MIUI Camera
 $(call inherit-product-if-exists, vendor/xiaomi/redwood-miuicamera/device.mk)
 
+# Personal apps (local only, see vendor/lineage-priv/apps)
+$(call inherit-product-if-exists, vendor/lineage-priv/apps/apps.mk)
+
 # Setup dalvik vm configs
 $(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
 
